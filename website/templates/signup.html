@@ -1,0 +1,43 @@
+{% extends "base.html" %}
+
+
+
+{% block content %} 
+
+
+<div class="form signup">
+  <span class="title">Registration</span>
+
+  <form action="#" method="post">
+      <div class="input-field">
+          <input type="text" name="name"placeholder="Enter your name" required>
+          <i class="uil uil-user"></i>
+      </div>
+      <div class="input-field">
+          <input type="text" name="email" placeholder="Enter your email" required>
+          <i class="uil uil-envelope icon"></i>
+      </div>
+      <div class="input-field">
+          <input type="password" name="password"class="password" placeholder="Create a password" required>
+          <i class="uil uil-lock icon"></i>
+      </div>
+
+
+
+
+      <div class="input-field button">
+          <input type="submit" value="Signup">
+      </div>
+  </form>
+
+  <div class="login-signup">
+      <span class="text">Already a member?
+          <a href="/login" class="text login-link">Login Now</a>
+      </span>
+  </div>
+</div>
+</div>
+</div>
+
+
+{% endblock %}

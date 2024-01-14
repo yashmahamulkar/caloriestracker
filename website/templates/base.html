@@ -1,0 +1,460 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    
+    <title>{% block title %}Home{% endblock %}</title>
+
+
+
+    <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.0/css/line.css">
+      <style>
+           * {
+    padding: 0;
+    margin: 0;
+    text-decoration: none;
+    list-style: none;
+    box-sizing: border-box;
+  }
+  body{
+    font-family: 'Gill Sans', 'Gill Sans MT';
+  }
+  nav{
+    background: #1f1951;
+   
+    width: 100%;
+    font-family: 'Gill Sans', 'Gill Sans MT';
+    font-weight: bold;
+    height: 10vh;
+  }
+  label.logo{
+    color: white;
+    font-size: 35px;
+    line-height: 80px;
+    padding: 0 100px;
+    font-family: 'Gill Sans', 'Gill Sans MT';
+    font-weight: bold;
+  }
+  nav ul{
+    float: right;
+    margin-right: 20px;
+  }
+  nav ul li{
+    display: inline-block;
+    line-height: 80px;
+    margin: 0 5px;
+  }
+  nav ul li a{
+    color: white;
+    font-size: 17px;
+    padding: 7px 13px;
+    border-radius: 3px;
+    text-transform: uppercase;
+  }
+  a.active,a:hover{
+    background: #99999d;
+    transition: .5s;
+  }
+  .checkbtn{
+    font-size: 30px;
+    color: white;
+    float: right;
+    line-height: 80px;
+    margin-right: 40px;
+    cursor: pointer;
+    display: none;
+  }
+  #check{
+    display: none;
+  }
+  @media (max-width: 952px){
+    label.logo{
+      font-size: 30px;
+      padding-left: 50px;
+    }
+    nav ul li a{
+      font-size: 16px;
+    }
+  }
+
+  .nav-link{
+    color: #fff;
+    margin: 2%;
+  }
+  @media (max-width: 858px){
+    .checkbtn{
+      display: block;
+    }
+    ul{
+      position: fixed;
+      width: 100%;
+      height: 100vh;
+      background: #2c3e50;
+      top: 80px;
+      left: -100%;
+      text-align: center;
+      transition: all .5s;
+    }
+    nav ul li{
+      display: block;
+      margin: 50px 0;
+      line-height: 30px;
+    }
+    nav ul li a{
+      font-size: 20px;
+    }
+    a:hover,a.active{
+      background: none;
+      color: #0082e6;
+    }
+    #check:checked ~ ul{
+      left: 0;
+    }
+  }
+  #nav-logo{
+    display: inline;
+    margin-left:30% ;
+  }
+
+/* --------- LOGIN CSS ------------ */
+ body {
+    height: 100vh;
+    display: flex;
+    flex-direction: column; /*stack vertical*/
+    align-items: center;
+  }
+.container{
+      position: relative;
+      max-width: 430px;
+      width: 100%;
+      background: #fff;
+      border-radius: 10px;
+      box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+      overflow: hidden;
+      margin: 0 20px;
+  }
+.container .forms{
+      display: flex;
+      align-items: center;
+      height: 440px;
+      width: 200%;
+      transition: height 0.2s ease;
+  }
+
+ .container .form{
+      width: 50%;
+      padding: 30px;
+      background-color: #fff;
+      transition: margin-left 0.18s ease;
+  }
+
+.container.active .login{
+      margin-left: -50%;
+      opacity: 0;
+      transition: margin-left 0.18s ease, opacity 0.15s ease;
+  }
+  .container .signup{
+      opacity: 0;
+      transition: opacity 0.09s ease;
+  }
+
+ .container.active .signup{
+      opacity: 1;
+      transition: opacity 0.2s ease;
+  }
+  .container.active .forms{
+      height: 600px;
+  }
+  .container .form .title{
+      position: relative;
+      font-size: 27px;
+      font-weight: 600;
+  }
+  .form .title::before{
+      content: '';
+      position: absolute;
+      left: 0;
+      bottom: 0;
+      height: 3px;
+      width: 30px;
+      background-color: #4070f4;
+      border-radius: 25px;
+  }
+  .form .input-field{
+      position: relative;
+      height: 50px;
+      width: 100%;
+      margin-top: 30px;
+  }
+  .input-field input{
+      position: absolute;
+      height: 100%;
+      width: 100%;
+      padding: 0 35px;
+      border: none;
+      outline: none;
+      font-size: 16px;
+      border-bottom: 2px solid #ccc;
+      border-top: 2px solid transparent;
+      transition: all 0.2s ease;
+  }
+  .input-field input:is(:focus, :valid){
+      border-bottom-color: #4070f4;
+  }
+  .input-field i{
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      color: #999;
+      font-size: 23px;
+      transition: all 0.2s ease;
+  }
+  .input-field input:is(:focus, :valid) ~ i{
+      color: #4070f4;
+  }
+  .input-field i.icon{
+      left: 0;
+  }
+  .input-field i.showHidePw{
+      right: 0;
+      cursor: pointer;
+      padding: 10px;
+  }
+  .form .checkbox-text{
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-top: 20px;
+  }
+  .checkbox-text .checkbox-content{
+      display: flex;
+      align-items: center;
+  }
+  .checkbox-content input{
+      margin-right: 10px;
+      accent-color: #4070f4;
+  }
+  .form .text{
+      color: #333;
+      font-size: 14px;
+  }
+  .form a.text{
+      color: #4070f4;
+      text-decoration: none;
+  }
+  .form a:hover{
+      text-decoration: underline;
+  }
+  .form .button{
+      margin-top: 35px;
+  }
+  .form .button input{
+      border: none;
+      color: #fff;
+      font-size: 17px;
+      font-weight: 500;
+      letter-spacing: 1px;
+      border-radius: 6px;
+      background-color: #4070f4;
+      cursor: pointer;
+      transition: all 0.3s ease;
+  }
+  .button input:hover{
+      background-color: #265df2;
+  }
+  .form .login-signup{
+      margin-top: 30px;
+      text-align: center;
+  }
+
+  
+.signup-form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: #ffffff; /* Set your desired background color */
+    border-radius: 10px;
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    width: 25vw;
+    padding: 20px;
+}
+
+.title {
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 20px;
+    color: #333333; /* Set your desired text color */
+}
+
+.signup-input {
+    position: relative;
+    height: 50px;
+    width: 100%;
+    margin-top: 15px;
+}
+
+.signup-input input {
+    width: 100%;
+    height: 100%;
+    padding: 10px;
+    border: 1px solid #ccc; /* Set your desired border color */
+    border-radius: 5px;
+    outline: none;
+    font-size: 16px;
+    transition: border-color 0.3s ease;
+}
+
+.signup-input input:focus,
+.signup-input input:valid {
+    border-color: #4070f4; /* Set your desired focus border color */
+}
+
+.signup-input i {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #999999; /* Set your desired icon color */
+    font-size: 20px;
+    left: 10px;
+}
+
+.button {
+    margin-top: 20px;
+}
+
+.button input {
+    width: 100%;
+    padding: 12px;
+    border: none;
+    border-radius: 5px;
+    background-color: #4070f4; /* Set your desired button color */
+    color: #ffffff; /* Set your desired button text color */
+    font-size: 18px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.button input:hover {
+    background-color: #265df2; /* Set your desired button hover color */
+}
+
+.login-signup {
+    margin-top: 15px;
+    text-align: center;
+}
+
+.text {
+    color: #333333; /* Set your desired text color */
+}
+
+.login-link {
+    color: #4070f4; /* Set your desired link color */
+    text-decoration: none;
+}
+
+.login-link:hover {
+    text-decoration: underline;
+}
+  #flash-messages{
+    background-color: red;
+    color:white;
+    width: 100vw;
+    justify-content:center;
+
+
+  }
+  .cal-form {
+        max-width: 400px;
+        margin: 0 auto;
+    }
+
+    .cal-label {
+        display: block;
+        margin-bottom: 5px;
+    }
+
+    .cal-input {
+        width: 100%;
+        padding: 8px;
+        margin-bottom: 10px;
+        box-sizing: border-box;
+    }
+
+    .cal-button {
+        background-color: #4CAF50;
+        color: white;
+        padding: 10px 15px;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+    }
+
+    .cal-button:hover {
+        background-color: #45a049;
+    }
+
+    
+    </style>
+  </head>
+  <body>
+
+
+    <nav>
+      
+      <div id="navbar">
+          <div class="nav-link">
+            
+              {% if user.is_authenticated %}
+              <a class="nav-link" id="home" href="/">Home</a>
+              <a class="nav-link" id="logout" href="/logout">Logout</a>
+              {% else %}
+              <a class="nav-link" id="login" href="/login">Login</a>
+              <a class="nav-link" id="signUp" href="/signup">Sign Up</a>
+              {% endif %}
+              <div id="nav-logo">
+                Calories Tracker
+              </div>
+              
+          </div>
+
+
+      </div>
+  </nav>  
+
+  {% with messages = get_flashed_messages() %}
+      {% if messages %}
+        <div id="flash-messages">
+          {% for message in messages %}
+            <p>{{ message }}</p>
+          {% endfor %}
+        </div>
+      {% endif %}
+    {% endwith %}
+
+
+
+    {% block content %} {% endblock %}
+   
+
+{% block javascript %}
+    <script type="text/javascript">
+      setTimeout(function () {
+          var flashMessages = document.getElementById('flash-messages');
+          if (flashMessages) {
+            flashMessages.style.display = 'none';
+          }
+        }, 1000);
+
+
+
+
+
+  
+</script>
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+{% endblock %}
+  </body>
+</html>

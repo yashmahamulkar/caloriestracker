@@ -1,0 +1,64 @@
+{% extends "base.html" %}
+
+{% block title %}Calories Tracker by Yash M{% endblock %}
+
+{% block content %}
+
+<h2>Calorie Entries</h2>
+<form class="cal-form" method="post" action="{{ url_for('views.home') }}">
+    <label class="cal-label" for="date">Date:</label>
+    <input class="cal-input" type="text" id="date" name="date" placeholder="YYYY-MM-DD" required>
+    <br>
+    <label class="cal-label" for="calories">Calories:</label>
+    <input class="cal-input" type="number" id="calories" name="calories" required>
+    <br>
+    <button class="cal-button" type="submit">Add Entry</button>
+</form>
+
+
+
+
+
+<canvas id="calorieChart" width="400" height="200"></canvas>
+<h6>Developed by Yash Mahamulkar</h6>
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script>
+    
+    var entriesData = {{ entries_data | tojson | safe }};
+    console.log(entriesData);
+   
+   
+    var entryDataArray = entriesData.map(function(entry) {
+        return entry.calories;
+    });
+
+    var entryDateArray = entriesData.map(function(entry) {
+        return entry.date;
+    });
+
+ 
+    var ctx = document.getElementById('calorieChart').getContext('2d');
+    var myChart = new Chart(ctx, {
+        type: 'bar',
+        data: {
+            labels: entryDateArray,
+            datasets: [{
+                label: 'Calories Consumed',
+                data: entryDataArray,
+                backgroundColor: 'rgba(75, 192, 192, 0.2)',
+                borderColor: 'rgba(75, 192, 192, 1)',
+                borderWidth: 1
+            }]
+        },
+        options: {
+            scales: {
+                y: {
+                    beginAtZero: true
+                }
+            }
+            
+        }
+    });
+</script>
+
+{% endblock %}
